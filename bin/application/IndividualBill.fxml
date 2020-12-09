@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IndividualBillController">
+   <children>
+      <Label layoutX="301.0" layoutY="14.0" text="Bill">
+         <font>
+            <Font name="Segoe UI Semibold" size="34.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table" layoutX="21.0" layoutY="175.0" prefHeight="200.0" prefWidth="609.0">
+        <columns>
+          <TableColumn fx:id="sr_column" prefWidth="31.0" text="Sr." />
+          <TableColumn fx:id="description_column" prefWidth="136.0" text="Description of Product" />
+            <TableColumn fx:id="qty_column" prefWidth="45.0" text="Qty" />
+            <TableColumn fx:id="rate_column" prefWidth="61.0" text="Rate/Tin" />
+            <TableColumn fx:id="trade_column" text="Trade Price" />
+            <TableColumn fx:id="amount_quantity" prefWidth="61.0" text="Amount" />
+            <TableColumn fx:id="less_discount_quantity" prefWidth="77.0" text="Discount" />
+            <TableColumn fx:id="value_of_supply_column" prefWidth="114.0" text="Value of Supply" />
+        </columns>
+      </TableView>
+      <Label fx:id="toLabel" layoutX="22.0" layoutY="98.0" text="To:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="invoiceLabel" layoutX="22.0" layoutY="127.0" text="Invoice:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="dateLabel" layoutX="381.0" layoutY="127.0" text="Date: ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="grandTotalLabel" layoutX="22.0" layoutY="378.0" text="Grand Total:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="amountInWordsLabel" layoutX="20.0" layoutY="399.0" text="Amount in words:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="printButton" layoutX="203.0" layoutY="441.0" mnemonicParsing="false" onAction="#onPrintClick" prefHeight="34.0" prefWidth="245.0" style="-fx-background-color: #009aff;" text="PRINT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="381.0" layoutY="98.0" text="Payment: ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="paymentStatusLabel" layoutX="461.0" layoutY="98.0" prefHeight="27.0" prefWidth="78.0" textFill="#00b111">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

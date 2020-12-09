@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="630.0" prefWidth="1080.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SearchController">
+   <children>
+      <Pane layoutX="127.0" prefHeight="630.0" prefWidth="954.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="table" layoutX="65.0" layoutY="138.0" onMouseClicked="#onTableItemClicked" prefHeight="356.0" prefWidth="582.0">
+               <columns>
+                  <TableColumn fx:id="billNo_column" prefWidth="51.0" text="Bill No." />
+                  <TableColumn fx:id="name_column" minWidth="0.0" prefWidth="160.0" text="Name" />
+                  <TableColumn fx:id="quantity_column" text="Quantity" />
+                  <TableColumn fx:id="date_column" prefWidth="83.0" text="Date" />
+                  <TableColumn fx:id="totalAmount_column" prefWidth="88.0" text="Total Amount" />
+                  <TableColumn fx:id="paymentStatus_column" prefWidth="119.0" text="Payment Status" />
+               </columns>
+            </TableView>
+            <Label layoutX="426.0" layoutY="23.0" text="Search">
+               <font>
+                  <Font name="Segoe UI Semibold" size="34.0" />
+               </font>
+            </Label>
+            <Label fx:id="notificationLabel" layoutX="119.0" layoutY="572.0" textFill="RED">
+               <font>
+                  <Font name="Segoe UI Light" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="billNoTextField" layoutX="67.0" layoutY="109.0" onKeyReleased="#onBillTypeReleased" onKeyTyped="#onBillTyped" prefHeight="25.0" prefWidth="103.0" promptText="Enter Bill No." />
+            <TextField fx:id="nameTextField" layoutX="179.0" layoutY="109.0" onKeyReleased="#onNameTyped" prefHeight="25.0" prefWidth="254.0" promptText="Enter Name to Search" />
+            <ComboBox fx:id="dateCombo" layoutX="67.0" layoutY="78.0" onAction="#onComboBoxDateSelected" onMouseClicked="#onComboBoxDateClicked" prefWidth="150.0" promptText="Bill Date" />
+            <Label layoutX="493.0" layoutY="83.0" text="Dates between">
+               <font>
+                  <Font name="Segoe UI Semilight" size="16.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="betweenStartDate" layoutX="439.0" layoutY="109.0" onAction="#onStartEndDaySelected" onMouseClicked="#onStartEndDayMouseClick" prefHeight="25.0" prefWidth="103.0" promptText="From" />
+            <DatePicker fx:id="betweenEndDate" layoutX="544.0" layoutY="109.0" onAction="#onStartEndDaySelected" onMouseClicked="#onStartEndDayMouseClick" prefHeight="25.0" prefWidth="103.0" promptText="To" />
+            <Button layoutX="65.0" layoutY="518.0" mnemonicParsing="false" onAction="#onClearAllClicked" prefHeight="34.0" prefWidth="189.0" style="-fx-background-color: #009aff;" text="Clear All Filter" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="notificationLabel" layoutX="65.0" layoutY="558.0" prefHeight="27.0" prefWidth="514.0" textFill="RED">
+               <font>
+                  <Font name="Segoe UI Light" size="20.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="searchExactNameCheckBox" layoutX="309.0" layoutY="87.0" mnemonicParsing="false" onAction="#onSearchCheckBoxClicked" text="Search Exact Name" />
+            <Label layoutX="89.0" layoutY="498.0" text="Double Click to select item" textFill="#007c00" />
+            <Label fx:id="changePaymentStatusLabel" layoutX="370.0" layoutY="494.0" onMousePressed="#onChangePaymentMousePressed" prefHeight="25.0" prefWidth="268.0" textFill="#000dff" underline="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="deleteRestoreItemButton" layoutX="701.0" layoutY="143.0" mnemonicParsing="false" onAction="#onClickDeleteSelectedItem" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: red;" text="Delete Selected Item" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="deleteRestoreLabel" layoutX="747.0" layoutY="93.0" text="Delete Menu">
+               <font>
+                  <Font name="Segoe UI Semilight" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="deleteRestoreLabel1" layoutX="786.0" layoutY="312.0" text="Print">
+               <font>
+                  <Font name="Segoe UI Semilight" size="22.0" />
+               </font>
+            </Label>
+            <Button fx:id="switchDeleteRestoreButton1" layoutX="701.0" layoutY="355.0" mnemonicParsing="false" onAction="#onClickPrintDisplayedButton" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: #00cc00;" text="Print Displayed" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="deleteRestoreLabel11" layoutX="773.0" layoutY="436.0" text="Backup">
+               <font>
+                  <Font name="Segoe UI Semilight" size="22.0" />
+               </font>
+            </Label>
+            <Button fx:id="switchDeleteRestoreButton11" layoutX="709.0" layoutY="481.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: #6600ff;" text="Create CSV file" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="salesLabel" layoutX="280.0" layoutY="519.0" prefHeight="32.0" prefWidth="204.0" text="Sales: ">
+               <font>
+                  <Font name="Segoe UI Semilight" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="totalLabel" layoutX="504.0" layoutY="519.0" prefHeight="32.0" prefWidth="150.0" text="Total: ">
+               <font>
+                  <Font name="Segoe UI Semilight" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button layoutY="113.0" mnemonicParsing="false" onAction="#onBillingButtonClicked" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: #73e600; -fx-background-radius: 0;" text="Billing" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutY="163.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: #4d9900; -fx-background-radius: 0;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutY="213.0" mnemonicParsing="false" onAction="#onStockButtonClick" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: #73e600 #73e600; -fx-background-radius: 0;" text="Stock" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutY="263.0" mnemonicParsing="false" onAction="#onSettingButtonClick" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: #73e600; -fx-background-radius: 0;" text="Settings" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="22.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

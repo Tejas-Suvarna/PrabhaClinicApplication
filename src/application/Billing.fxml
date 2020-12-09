@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="630.0" prefWidth="1080.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BillingController">
+   <children>
+      <Pane layoutX="127.0" prefHeight="630.0" prefWidth="954.0" style="-fx-background-color: white;">
+         <children>
+            <TextField fx:id="nameTextField" layoutX="40.0" layoutY="96.0" onKeyReleased="#onEnterName" onKeyTyped="#onNameTyped" prefHeight="34.0" prefWidth="204.0" promptText="Enter Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <ListView fx:id="listViewForNames" layoutX="42.0" layoutY="142.0" onMouseClicked="#onNameListViewClicked" prefHeight="140.0" prefWidth="200.0" />
+            <ComboBox fx:id="itemComboBox" layoutX="49.0" layoutY="337.0" onAction="#onItemSelected" onMouseClicked="#onComboBoxClick" prefHeight="25.0" prefWidth="204.0" promptText="Select Batch" />
+            <TextField fx:id="discountTextField" layoutX="117.0" layoutY="474.0" onKeyReleased="#onDiscountRelease" onKeyTyped="#onDiscountTyped" prefHeight="25.0" prefWidth="67.0" />
+            <Button fx:id="updateAddButton" layoutX="44.0" layoutY="522.0" mnemonicParsing="false" onAction="#onClickUpdateAdd" prefHeight="34.0" prefWidth="111.0" style="-fx-background-color: #009aff;" text="Update/Add" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label layoutX="76.0" layoutY="62.0" text="Customer Details">
+               <font>
+                  <Font name="Segoe UI Semilight" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="96.0" layoutY="302.0" text="Item Details">
+               <font>
+                  <Font name="Segoe UI Semilight" size="18.0" />
+               </font>
+            </Label>
+            <TableView fx:id="table" layoutX="292.0" layoutY="195.0" onMouseClicked="#onTableItemClicked" prefHeight="225.0" prefWidth="643.0">
+              <columns>
+                <TableColumn fx:id="sr_column" prefWidth="20.0" text="Sr." />
+                <TableColumn fx:id="description_column" prefWidth="183.0" text="Description of Product" />
+                  <TableColumn fx:id="qty_column" minWidth="5.0" prefWidth="47.0" text="Qty" />
+                  <TableColumn fx:id="rate_column" prefWidth="61.0" text="Rate/Tin" />
+                  <TableColumn fx:id="trade_column" prefWidth="68.0" text="Trade price" />
+                  <TableColumn fx:id="amount_quantity" prefWidth="55.0" text="Amount" />
+                  <TableColumn fx:id="less_discount_quantity" minWidth="0.0" prefWidth="92.0" text="Discount" />
+                  <TableColumn fx:id="value_of_supply_column" prefWidth="99.0" text="Value of Supply" />
+              </columns>
+            </TableView>
+            <Label layoutX="429.0" layoutY="23.0" text="Billing">
+               <font>
+                  <Font name="Segoe UI Semibold" size="34.0" />
+               </font>
+            </Label>
+            <Label fx:id="toLabel" layoutX="292.0" layoutY="126.0" text="To:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="invoiceLabel" layoutX="292.0" layoutY="155.0" text="Invoice:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateLabel" layoutX="651.0" layoutY="155.0" text="Date: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="grandTotalLabel" layoutX="291.0" layoutY="435.0" text="Grand Total:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="amountInWordsLabel" layoutX="291.0" layoutY="460.0" text="Amount in words:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="printButton" layoutX="322.0" layoutY="526.0" mnemonicParsing="false" onAction="#onPrintClick" prefHeight="34.0" prefWidth="245.0" style="-fx-background-color: #009aff;" text="PRINT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="priceLabel" layoutX="46.0" layoutY="372.0" prefHeight="19.0" prefWidth="200.0" text="Price:">
+               <font>
+                  <Font name="Segoe UI" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="notificationLabel" layoutX="119.0" layoutY="572.0" textFill="RED">
+               <font>
+                  <Font name="Segoe UI Light" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="46.0" layoutY="436.0" prefHeight="19.0" prefWidth="67.0" text="Quantity:">
+               <font>
+                  <Font name="Segoe UI" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="quantityTextField" layoutX="113.0" layoutY="433.0" onKeyTyped="#onQuantityTypedListener" prefHeight="25.0" prefWidth="54.0" />
+            <Label fx:id="outOfLabel" layoutX="174.0" layoutY="437.0" text="/Out of">
+               <font>
+                  <Font name="Segoe UI" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="46.0" layoutY="477.0" prefHeight="19.0" prefWidth="67.0" text="Trade Price:">
+               <font>
+                  <Font name="Segoe UI" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="maxOfLabel" layoutX="187.0" layoutY="478.0" text="/Max">
+               <font>
+                  <Font name="Segoe UI" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="maxOfLabel1" layoutX="170.0" layoutY="531.0" onMouseClicked="#onRemoveItemLabelClick" text="Remove Item" textFill="RED" underline="true">
+               <font>
+                  <Font name="Segoe UI" size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="printButton1" layoutX="587.0" layoutY="526.0" mnemonicParsing="false" onAction="#onSaveClick" prefHeight="34.0" prefWidth="175.0" style="-fx-background-color: #00cc00;" text="SAVE" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <CheckBox fx:id="paymentDoneCheckBox" layoutX="786.0" layoutY="535.0" mnemonicParsing="false" onAction="#onPaymentDoneCheckBoxClicked" text="Payment Done" textFill="RED" />
+            <Label fx:id="valueOfSupplyLabel" layoutX="48.0" layoutY="401.0" prefHeight="19.0" prefWidth="200.0" text="Value of Supply:">
+               <font>
+                  <Font name="Segoe UI" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button layoutY="113.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: #4d9900; -fx-background-radius: 0;" text="Billing" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutY="163.0" mnemonicParsing="false" onAction="#onSearchButtonClick" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: #73e600; -fx-background-radius: 0;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutY="213.0" mnemonicParsing="false" onAction="#onStockButtonClick" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: #73e600; -fx-background-radius: 0;" text="Stock" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutY="263.0" mnemonicParsing="false" onAction="#onSettingButtonClick" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: #73e600; -fx-background-radius: 0;" text="Settings" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="22.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
