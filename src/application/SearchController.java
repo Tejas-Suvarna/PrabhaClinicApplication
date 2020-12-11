@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -327,7 +328,7 @@ public class SearchController implements Initializable {
 //			e.printStackTrace();
 //		}
 	}
-	public void onClickPrintDisplayedButton(ActionEvent ae) {
+	public void onClickPrintDisplayedButton(ActionEvent ae) throws ParseException {
 		try {
 			
 				Alert alert = new Alert(AlertType.CONFIRMATION);

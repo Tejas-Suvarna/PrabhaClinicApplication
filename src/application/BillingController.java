@@ -8,6 +8,8 @@ package application;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -30,6 +32,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -65,6 +68,7 @@ public class BillingController implements Initializable{
 	@FXML ListView<String> listViewForNames;
 	@FXML CheckBox paymentDoneCheckBox;
 	@FXML TableView<Item> table;
+	@FXML DatePicker datePicker;
 
 	@FXML	TableColumn<Item,String> sr_column;
 	@FXML	TableColumn<Item,String> description_column;
@@ -83,7 +87,12 @@ public class BillingController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		dateLabel.setText(dateLabel.getText() + " " + model.getDate());
+//		dateLabel.setText(dateLabel.getText() + " " + model.getDate());
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String date = model.getDate();
+		LocalDate localDate = LocalDate.parse(date, formatter);
+		datePicker.setValue(localDate);
 		quantityTextField.setEditable(false);
 		discountTextField.setEditable(false);
 		paymentDoneCheckBox.setSelected(true);
@@ -96,7 +105,6 @@ public class BillingController implements Initializable{
 	private void addTypeListenners() {
 		
 		nameTextField.textProperty().addListener(new ChangeListener<String>() {
-			
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				
@@ -223,8 +231,8 @@ public class BillingController implements Initializable{
 				alert.setContentText("Are you sure to print?");
 				Optional <ButtonType> action = alert.showAndWait();
 				if(action.get() == ButtonType.OK) {
-					model.makeBill(nameTextField.getText().trim().toUpperCase(),table.getItems(),paymentDoneCheckBox.isSelected());
-					model.printBill(invoiceNo,nameTextField.getText(),model.getDate(), NumberToWordsConverter.convert((int) grandTotal),Double.toString(grandTotal));
+					model.makeBill(nameTextField.getText().trim().toUpperCase(),table.getItems(),paymentDoneCheckBox.isSelected(),datePicker.getValue());
+					model.printBill(invoiceNo,nameTextField.getText(),datePicker.getValue().toString(), NumberToWordsConverter.convert((int) grandTotal),Double.toString(grandTotal));
 				}
 				else return;
 				
@@ -324,7 +332,7 @@ public class BillingController implements Initializable{
 				alert.setContentText("Are you sure to save?");
 				Optional <ButtonType> action = alert.showAndWait();
 				if(action.get() == ButtonType.OK) {
-					model.makeBill(nameTextField.getText().trim().toUpperCase(),table.getItems(),paymentDoneCheckBox.isSelected());
+					model.makeBill(nameTextField.getText().trim().toUpperCase(),table.getItems(),paymentDoneCheckBox.isSelected(),datePicker.getValue());
 				}
 				else return;
 				

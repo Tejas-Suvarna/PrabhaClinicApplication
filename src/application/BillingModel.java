@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -123,7 +124,7 @@ public class BillingModel {
 		return null;
 	}
 
-	public void makeBill(String customerName, ObservableList<Item> items, boolean isPaymentDone) {
+	public void makeBill(String customerName, ObservableList<Item> items, boolean isPaymentDone, LocalDate date) {
 		connection = SQLiteConnection.Connector();
 		String paymentStatus;
 		if(isPaymentDone)
@@ -138,7 +139,7 @@ public class BillingModel {
 		
 		
 		
-		String query = "UPDATE BILL SET CUSTOMER_NAME = " + "'" + customerName + "'" + ", DATE = (SELECT date('now'))" + ", TOTAL_AMT = " + grandTotal + ", PAYMENT_STATUS = '" + paymentStatus + "', QUANTITY = " + salesQuantity + " WHERE CUSTOMER_NAME IS NULL";
+		String query = "UPDATE BILL SET CUSTOMER_NAME = " + "'" + customerName + "'" + ", DATE = '" + date.toString() + "', TOTAL_AMT = " + grandTotal + ", PAYMENT_STATUS = '" + paymentStatus + "', QUANTITY = " + salesQuantity + " WHERE CUSTOMER_NAME IS NULL";
 		String query2 = "INSERT INTO BILL (Customer_Name,Date) VALUES(NULL,NULL);";
 		System.out.println(query);
 		System.out.println(query2);
@@ -243,6 +244,10 @@ public class BillingModel {
 
 	public void printBill(String billID,String name,String date,String valueInMoney,String grand) {
 		try {
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				Date date2 = sdf.parse(date);
+				SimpleDateFormat sdfNew = new SimpleDateFormat("dd/MM/yyyy");
+				date=sdfNew.format(date2);
 				getGSTValuesFromDatabase();
 				InputStream in = new FileInputStream(new File("C:\\Users\\Public\\Blank_A4.jrxml"));
 				JasperDesign jd=JRXmlLoader.load(in);

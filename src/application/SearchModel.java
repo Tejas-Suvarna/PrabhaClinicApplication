@@ -8,9 +8,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,7 +40,7 @@ public class SearchModel {
 	Connection connection;
 	Calendar todayCalender = Calendar.getInstance();
 	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String defaultQuery = "SELECT BILL_ID,CUSTOMER_NAME,DATE,TOTAL_AMT,PAYMENT_STATUS,QUANTITY,DELETEFLAG FROM BILL B WHERE CUSTOMER_NAME IS NOT NULL ORDER BY BILL_ID DESC";
+	String defaultQuery = "SELECT BILL_ID,CUSTOMER_NAME,strftime('%d/%m/%Y',DATE) AS DATE,TOTAL_AMT,PAYMENT_STATUS,QUANTITY,DELETEFLAG FROM BILL B WHERE CUSTOMER_NAME IS NOT NULL ORDER BY BILL_ID DESC";
 	String commonQuery;
 	
 	public ObservableList<String> getListItems() {
@@ -344,7 +347,17 @@ public class SearchModel {
 	}
 
 
-	public void printReport(String name, LocalDate betweenStartDate, LocalDate betweenEndDate, String duration, String sales, String total) {
+	public void printReport(String name, LocalDate betweenStartDate, LocalDate betweenEndDate, String duration, String sales, String total) throws ParseException {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date1 = sdf.parse(betweenStartDate.toString());
+		SimpleDateFormat sdfNew = new SimpleDateFormat("dd/MM/yyyy");
+
+	
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+		Date date2 = sdf.parse(betweenEndDate.toString());
+		SimpleDateFormat sdfNew2 = new SimpleDateFormat("dd/MM/yyyy");
+		
 		String startDate = null,endDate=null;
 		getGSTValuesFromDatabase();
 		if(betweenStartDate!=null && betweenEndDate!=null) {
@@ -396,8 +409,8 @@ public class SearchModel {
 			jd.setQuery(jdq);
 			Map<String, Object> parameters = new HashMap<String, Object>();
 			if(betweenStartDate!=null && betweenEndDate!=null) {
-				parameters.put("StartDate", startDate);
-				parameters.put("EndDate", endDate);
+				parameters.put("StartDate", sdfNew.format(date1));
+				parameters.put("EndDate", sdfNew2.format(date2));
 			}
 			else if(duration!=null){
 				parameters.put("StartDate", startDate);

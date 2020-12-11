@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -85,6 +87,11 @@ public class IndividualBillModel {
 			
 			
 			//C:/Users/tejas/eclipse-workspace/Prabha%20Clinic/bin/application/Blank_A4.jrxml
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				Date date2 = sdf.parse(date);
+				SimpleDateFormat sdfNew = new SimpleDateFormat("dd/MM/yyyy");
+				date=sdfNew.format(date2);
+				
 				getGSTValuesFromDatabase();
 				InputStream in = new FileInputStream(new File("C:\\Users\\Public\\Blank_A4.jrxml"));
 				JasperDesign jd=JRXmlLoader.load(in);
