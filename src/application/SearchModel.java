@@ -11,7 +11,6 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -355,7 +354,7 @@ public class SearchModel {
 
 	
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
-		Date date2 = sdf.parse(betweenEndDate.toString());
+		Date date2 = sdf2.parse(betweenEndDate.toString());
 		SimpleDateFormat sdfNew2 = new SimpleDateFormat("dd/MM/yyyy");
 		
 		String startDate = null,endDate=null;
