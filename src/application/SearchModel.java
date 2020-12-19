@@ -348,14 +348,21 @@ public class SearchModel {
 
 	public void printReport(String name, LocalDate betweenStartDate, LocalDate betweenEndDate, String duration, String sales, String total) throws ParseException {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date date1 = sdf.parse(betweenStartDate.toString());
-		SimpleDateFormat sdfNew = new SimpleDateFormat("dd/MM/yyyy");
 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date1 = null, date2 = null;
+		SimpleDateFormat sdfNew = null, sdfNew2 = null;
+		
+		if(betweenStartDate!=null) {
+			date1 = sdf.parse(betweenStartDate.toString());
+			sdfNew = new SimpleDateFormat("dd/MM/yyyy");
+		}
 	
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
-		Date date2 = sdf2.parse(betweenEndDate.toString());
-		SimpleDateFormat sdfNew2 = new SimpleDateFormat("dd/MM/yyyy");
+		if(betweenEndDate!=null) {
+			date2 = sdf2.parse(betweenEndDate.toString());
+			sdfNew2 = new SimpleDateFormat("dd/MM/yyyy");
+		}
 		
 		String startDate = null,endDate=null;
 		getGSTValuesFromDatabase();

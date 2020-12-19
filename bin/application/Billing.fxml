@@ -82,7 +82,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="printButton" layoutX="322.0" layoutY="526.0" mnemonicParsing="false" onAction="#onPrintClick" prefHeight="34.0" prefWidth="245.0" style="-fx-background-color: #009aff;" text="PRINT" textFill="WHITE">
+            <Button fx:id="printButton" layoutX="322.0" layoutY="512.0" mnemonicParsing="false" onAction="#onPrintClick" prefHeight="34.0" prefWidth="245.0" style="-fx-background-color: #009aff;" text="PRINT" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -92,7 +92,7 @@
                   <Font name="Segoe UI" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="notificationLabel" layoutX="119.0" layoutY="572.0" textFill="RED">
+            <Label fx:id="notificationLabel" layoutX="39.0" layoutY="560.0" prefHeight="27.0" prefWidth="357.0" textFill="RED">
                <font>
                   <Font name="Segoe UI Light" size="18.0" />
                </font>
@@ -123,12 +123,12 @@
                   <Font name="Segoe UI" size="13.0" />
                </font>
             </Label>
-            <Button fx:id="printButton1" layoutX="587.0" layoutY="526.0" mnemonicParsing="false" onAction="#onSaveClick" prefHeight="34.0" prefWidth="175.0" style="-fx-background-color: #00cc00;" text="SAVE" textFill="WHITE">
+            <Button fx:id="printButton1" layoutX="587.0" layoutY="512.0" mnemonicParsing="false" onAction="#onSaveClick" prefHeight="34.0" prefWidth="175.0" style="-fx-background-color: #00cc00;" text="SAVE" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <CheckBox fx:id="paymentDoneCheckBox" layoutX="786.0" layoutY="535.0" mnemonicParsing="false" onAction="#onPaymentDoneCheckBoxClicked" text="Payment Done" textFill="RED" />
+            <CheckBox fx:id="paymentDoneCheckBox" layoutX="785.0" layoutY="523.0" mnemonicParsing="false" onAction="#onPaymentDoneCheckBoxClicked" text="Payment Done" textFill="RED" />
             <Label fx:id="valueOfSupplyLabel" layoutX="48.0" layoutY="401.0" prefHeight="19.0" prefWidth="200.0" text="Value of Supply:">
                <font>
                   <Font name="Segoe UI" size="15.0" />
