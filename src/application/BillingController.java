@@ -355,6 +355,10 @@ public class BillingController implements Initializable{
 	}
 	
 	public void onClickUpdateAdd(ActionEvent ae) {
+		if(model.getItemQuantity(itemComboBox.getSelectionModel().getSelectedIndex()).equals("0")) {
+			return;
+		}
+		
 		try {
 			if(nameTextField.getText() == "") {
 				notificationLabel.setText("Enter the customer name");
@@ -448,6 +452,9 @@ public class BillingController implements Initializable{
 
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				if(model.getItemQuantity(itemComboBox.getSelectionModel().getSelectedIndex()).equals("0")) {
+					return;
+				}
 				try {
 					if(newValue) {
 						//discountTextField.setText("" + (Integer.parseInt(model.getItemPrice(itemComboBox.getSelectionModel().getSelectedIndex()))));
@@ -483,6 +490,9 @@ public class BillingController implements Initializable{
 
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				if(model.getItemQuantity(itemComboBox.getSelectionModel().getSelectedIndex()).equals("0")) {
+					return;
+				}
 				try {
 					if(itemComboBox.getSelectionModel().getSelectedItem() == null)
 						return;
@@ -525,6 +535,12 @@ public class BillingController implements Initializable{
 	
 	public void onItemSelected(ActionEvent me) {
 		if(model.getItemQuantity(itemComboBox.getSelectionModel().getSelectedIndex()).equals("0")) {
+			quantityTextField.setText("");
+			discountTextField.setText("");
+			quantityTextField.setEditable(false);
+			discountTextField.setEditable(false);
+			outOfLabel.setText("/Out of ");
+			maxOfLabel.setText("/Max");
 			notificationLabel.setText("Stock Empty");
 			return;
 		}
